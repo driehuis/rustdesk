@@ -666,7 +666,7 @@ impl Config {
             #[cfg(not(target_os = "android"))]
             let mut path: PathBuf = format!("/tmp/{}", *APP_NAME.read().unwrap()).into();
             fs::create_dir(&path).ok();
-            fs::set_permissions(&path, fs::Permissions::from_mode(0o0777)).ok();
+            fs::set_permissions(&path, fs::Permissions::from_mode(0o1777)).ok();
             path.push(format!("ipc{postfix}"));
             path.to_str().unwrap_or("").to_owned()
         }
